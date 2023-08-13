@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MyStyle {
+  /// Space
+  static SizedBox constSpace() => const SizedBox(
+        height: 10,
+      );
+
   /// Textstyle
   static TextStyle spectralFont(
       double fontSize, Color fontColor, FontWeight fontWeight) {
@@ -11,6 +16,7 @@ class MyStyle {
       fontWeight: fontWeight,
     );
   }
+
   static TextStyle robotoFont(
       double fontSize, Color fontColor, FontWeight fontWeight) {
     return GoogleFonts.spectral(
@@ -19,6 +25,7 @@ class MyStyle {
       fontWeight: fontWeight,
     );
   }
+
   static TextStyle openSansFont(
       double fontSize, Color fontColor, FontWeight fontWeight) {
     return GoogleFonts.openSans(
@@ -27,14 +34,16 @@ class MyStyle {
       fontWeight: fontWeight,
     );
   }
+
   static TextStyle montserratFont(
       double fontSize, Color fontColor, FontWeight fontWeight) {
-    return GoogleFonts.montserrat (
+    return GoogleFonts.montserrat(
       fontSize: fontSize,
       color: fontColor,
       fontWeight: fontWeight,
     );
   }
+
   static TextStyle ptSansFont(
       double fontSize, Color fontColor, FontWeight fontWeight) {
     return GoogleFonts.ptSans(
@@ -43,6 +52,7 @@ class MyStyle {
       fontWeight: fontWeight,
     );
   }
+
   static TextStyle poppinsFont(
       double fontSize, Color fontColor, FontWeight fontWeight) {
     return GoogleFonts.poppins(
@@ -51,6 +61,7 @@ class MyStyle {
       fontWeight: fontWeight,
     );
   }
+
   static TextStyle nunitoSansFont(
       double fontSize, Color fontColor, FontWeight fontWeight) {
     return GoogleFonts.nunitoSans(
@@ -59,6 +70,7 @@ class MyStyle {
       fontWeight: fontWeight,
     );
   }
+
   static TextStyle latoFont(
       double fontSize, Color fontColor, FontWeight fontWeight) {
     return GoogleFonts.lato(
@@ -67,6 +79,7 @@ class MyStyle {
       fontWeight: fontWeight,
     );
   }
+
   static TextStyle pacificoFont(
       double fontSize, Color fontColor, FontWeight fontWeight) {
     return GoogleFonts.pacifico(
@@ -75,6 +88,7 @@ class MyStyle {
       fontWeight: fontWeight,
     );
   }
+
   static TextStyle caveatFont(
       double fontSize, Color fontColor, FontWeight fontWeight) {
     return GoogleFonts.caveat(

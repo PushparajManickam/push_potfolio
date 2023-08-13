@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:push_potfolio/config/style.dart';
 import 'package:push_potfolio/constant/constant.dart';
 import 'package:push_potfolio/theme/color.dart';
+import 'package:push_potfolio/widget/bio_widget.dart';
+import 'package:push_potfolio/widget/profile_widget.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -11,46 +13,41 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
+  var _icon = Icons.wb_sunny;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(
-                height: 350,
-                margin: EdgeInsets.symmetric(
-                  horizontal: 10,
-                  vertical: 10,
-                ),
-                child: Center(
-                  child: Image.asset(
-                    MyConstant.profileImagePath,
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 10,
-                  vertical: 10,
-                ),
-                child: Column(
-                  children: [
-                    Text(
-                      MyConstant.profileName,
-                      
-                      style: MyStyle.caveatFont(
-                        MyConstant.maximumSize,
-                        MyColor.blackColor,
-                        FontWeight.bold,
-                      ),
+              MyStyle.constSpace(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  IconButton(
+                    icon: Icon(
+                      _icon,
+                      color: MyColor.blackColor,
+                      size: MyConstant.titleSize,
                     ),
-                  ],
-                ),
-              )
+                    onPressed: () {
+                      //TODO: theme mode
+                      setState(() {
+                        if (_icon == Icons.wb_sunny) {
+                          _icon = Icons.brightness_2;
+                          // themeChange.darkTheme = true;
+                        } else {
+                          _icon = Icons.wb_sunny;
+                          // themeChange.darkTheme = false;
+                        }
+                      });
+                    },
+                  ),
+                ],
+              ),
+              ProfileWidget(),
+              BioWidget(),
             ],
           ),
         ),

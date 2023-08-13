@@ -32,7 +32,10 @@ class MyApp extends StatelessWidget {
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
 
-        colorScheme: ColorScheme.fromSeed(seedColor: MyColor.appColor,),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: MyColor.appColor,
+          background: MyColor.whiteColor,
+        ),
         useMaterial3: true,
       ),
       home: const DashboardScreen(),
