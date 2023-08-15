@@ -10,11 +10,11 @@ class TitleWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
           titleName!,
-          style: MyStyle.ptSansFont(
+          style: MyStyle.robotoFont(
             MyConstant.largeSize,
             MyColor.blackColor,
             FontWeight.bold,

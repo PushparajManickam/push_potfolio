@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:push_potfolio/constant/constant.dart';
-import 'package:push_potfolio/theme/color.dart';
 
 class ProfileWidget extends StatelessWidget {
   const ProfileWidget({super.key});
