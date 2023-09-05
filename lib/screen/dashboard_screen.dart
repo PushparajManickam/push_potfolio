@@ -7,6 +7,7 @@ import 'package:push_potfolio/constant/constant.dart';
 import 'package:push_potfolio/theme/color.dart';
 import 'package:push_potfolio/theme/theme_manager.dart';
 import 'package:push_potfolio/widget/about_us_widget.dart';
+import 'package:push_potfolio/widget/resume_button_widget.dart';
 import 'package:push_potfolio/widget/bio_widget.dart';
 import 'package:push_potfolio/widget/contact_us_widget.dart';
 import 'package:push_potfolio/widget/profile_widget.dart';
@@ -27,6 +28,7 @@ class DashboardScreen extends StatefulWidget {
 
 class _DashboardScreenState extends State<DashboardScreen> {
   var _icon = Icons.wb_sunny;
+
   @override
   Widget build(BuildContext context) {
     final isDartTheme = Provider.of<ThemeManager>(context).getIsDartTheme;
@@ -38,61 +40,75 @@ class _DashboardScreenState extends State<DashboardScreen> {
       child: Scaffold(
         body: SafeArea(
           child: SingleChildScrollView(
-            child: Column(
-              children: [
-                MyStyle.constSpace(),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: 14.0,
+                horizontal: 14.0,
+              ),
+              child: Column(
+                children: [
+                  MyStyle.constSpace(),
 
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    IconButton(
-                      icon: Icon(
-                        _icon,
-                        color: MyColor.blackColor,
-                        size: MyConstant.titleSize,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      IconButton(
+                        icon: Icon(
+                          _icon,
+                          color: MyColor.blackColor,
+                          size: MyConstant.titleSize,
+                        ),
+                        onPressed: () {
+                          // AdaptiveTheme.of(context).toggleThemeMode();
+                          //TODO: theme mode
+                          setState(() {
+                            if (_icon == Icons.wb_sunny) {
+                              _icon = Icons.brightness_2;
+                              AdaptiveTheme.of(context).setDark();
+                              Provider.of<ThemeManager>(context, listen: false)
+                                  .setIsSetDartTheme = true;
+                            } else {
+                              _icon = Icons.wb_sunny;
+                              AdaptiveTheme.of(context).setLight();
+                              Provider.of<ThemeManager>(context, listen: false)
+                                  .setIsSetDartTheme = false;
+                            }
+                          });
+                        },
                       ),
-                      onPressed: () {
-                        // AdaptiveTheme.of(context).toggleThemeMode();
-                        //TODO: theme mode
-                        setState(() {
-                          if (_icon == Icons.wb_sunny) {
-                            _icon = Icons.brightness_2;
-                            AdaptiveTheme.of(context).setDark();
-                            Provider.of<ThemeManager>(context, listen: false)
-                                .setIsSetDartTheme = true;
-                          } else {
-                            _icon = Icons.wb_sunny;
-                            AdaptiveTheme.of(context).setLight();
-                            Provider.of<ThemeManager>(context, listen: false)
-                                .setIsSetDartTheme = false;
-                          }
-                        });
-                      },
-                    ),
-                  ],
-                ),
+                    ],
+                  ),
 
-                /// Bio
-                ProfileWidget(),
-                BioWidget(),
+                  /// Bio
+                  ProfileWidget(),
+                  BioWidget(),
+                  SizedBox(
+                    height: 50,
+                    child: const ResumeButtonWidget(),
+                  ),
+                  const GlobalSizedBoxHeight(),
 
-                /// About-Us
-                AboutUsWidget(),
+                  /// About-Us
+                  AboutUsWidget(),
+                  const GlobalSizedBoxHeight(),
 
-                /// Skill
-                SkillWidget(),
+                  /// Skill
+                  SkillWidget(),
+                  const GlobalSizedBoxHeight(),
 
-                /// Achievement
-                AchievementWidget(),
+                  /// Achievement
+                  AchievementWidget(),
+                  const GlobalSizedBoxHeight(),
 
-                /// Social-Media
-                TitleWidget("Social Media"),
-                SocialMediaWidget(),
+                  /// Social-Media
+                  SocialMediaWidget(),
+                  const GlobalSizedBoxHeight(),
 
-                ///Contact-Us
-                ContactUsWidget(),
-                const GlobalSizedBoxHeight(),
-              ],
+                  ///Contact-Us
+                  ContactUsWidget(),
+                  const GlobalSizedBoxHeight(),
+                ],
+              ),
             ),
           ),
         ),

@@ -20,37 +20,41 @@ class AchievementWidget extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          TitleWidget("Achievements"),
-          const GlobalSizedBoxHeight(),
-          CarouselSlider.builder(
-            itemCount: _myAchievementList.length,
-            options: CarouselOptions(
-              height: 320,
-              aspectRatio: 16 / 9,
-              viewportFraction: 0.8,
-              initialPage: 0,
-              enableInfiniteScroll: true,
-              reverse: false,
-              autoPlay: true,
-              autoPlayInterval: Duration(seconds: 3),
-              autoPlayAnimationDuration: Duration(milliseconds: 800),
-              autoPlayCurve: Curves.fastOutSlowIn,
-              enlargeCenterPage: true,
-              enlargeFactor: 0.3,
-              scrollDirection: Axis.horizontal,
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        TitleWidget("Achievements"),
+        const GlobalSizedBoxHeight(),
+        CarouselSlider.builder(
+          itemCount: _myAchievementList.length,
+          options: CarouselOptions(
+            height: 270,
+            aspectRatio: 16 / 9,
+            viewportFraction: 0.75,
+            initialPage: 0,
+            enableInfiniteScroll: true,
+            reverse: false,
+            autoPlay: true,
+            autoPlayInterval: Duration(
+              seconds: 4,
             ),
-            itemBuilder:
-                (BuildContext context, int itemIndex, int pageViewIndex) {
-              return AchievementCard(
-                _myAchievementList[itemIndex],
-              );
-            },
+            autoPlayAnimationDuration: Duration(
+              milliseconds: 900,
+            ),
+            autoPlayCurve: Curves.fastOutSlowIn,
+            enlargeCenterPage: true,
+            enlargeFactor: 0.25,
+            scrollDirection: Axis.horizontal,
           ),
-        ],
-      ),
+          itemBuilder:
+              (BuildContext context, int itemIndex, int pageViewIndex) {
+            return AchievementCard(
+              _myAchievementList[itemIndex],
+            );
+          },
+        ),
+        const GlobalSizedBoxHeight()
+      ],
     );
   }
 }

@@ -13,16 +13,22 @@ class TitleWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const DividerWidget(),
+        Padding(
+          padding: const EdgeInsets.only(left: 10.0,),
+          child: const DividerWidget(),
+        ),
         const GlobalSizedBoxWidth(),
         Text(titleName!,
             style: MyStyle.robotoFont(
               MyConstant.largeSize,
               MyColor.blackColor,
               FontWeight.bold,
-            )),
+            ),),
         const GlobalSizedBoxWidth(),
-        const DividerWidget(),
+        Padding(
+          padding: const EdgeInsets.only(right:10.0,),
+          child: const DividerWidget(),
+        ),
       ],
     );
   }

@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
           darkTheme: darkTheme,
           debugShowCheckedModeBanner: false,
           
-          home: DashboardScreen(savedThemeMode: savedThemeMode),
+          home: DashboardScreen(savedThemeMode: savedThemeMode,),
         ),
       ),
     );

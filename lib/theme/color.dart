@@ -6,7 +6,11 @@ class MyColor {
 
   // Black-Color
   static const Color blackColor = Color(0xff000000);
+  /// White-Color
   static const Color whiteColor = Color(0xffFFFFFF);
+  /// Background-Color
+  static const Color backgroundColor = Color(0xFF5733);
+  
 
   /// Purple-Color
   static const Color purpleColor1 = Color(0xff62438C);

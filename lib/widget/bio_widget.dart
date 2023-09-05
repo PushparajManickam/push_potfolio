@@ -8,6 +8,7 @@ class BioWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return Container(
       margin: const EdgeInsets.symmetric(
         horizontal: 10,
@@ -32,6 +33,7 @@ class BioWidget extends StatelessWidget {
               FontWeight.bold,
             ),
           ),
+         
         ],
       ),
     );

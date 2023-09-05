@@ -7,7 +7,7 @@ class ProfileWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 350,
+      height: MediaQuery.of(context).size.height * 0.28,
       width: double.infinity,
       // color: MyColor.graphColor1,
       margin: EdgeInsets.symmetric(

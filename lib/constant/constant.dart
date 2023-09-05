@@ -1,7 +1,11 @@
 class MyConstant {
   /// Image-Path
-  static const String profileImagePath = 'assets/images/pushparaj_photo.png';
+  static const String profileImagePath = 'assets/images/profile_photo.png';
   static const String flagIconPath = 'assets/icons/india_flag.svg';
+
+  ///Image-Pathh from network
+  static const String profileImagePathNetwork =
+      'https://drive.google.com/file/d/1PxIqFm91lqCxsIRiFwaI_RaRCT-_W4nX/view?usp=sharing';
 
   /// Static-Name
   static const String profileName = 'Pushparaj Manickam';
@@ -13,8 +17,8 @@ class MyConstant {
       'a professional attitude, excellent communication skills and the highest code quality, '
       'then I\'m the person looking for.Knownledge of UI/UX, and hand on experience designing in UI Working '
       'provider package for state management and firebase for application analysis.Experience developing with RESTAPI for backend and SQL Server for database';
-  
-   static const List<String> socialIconURL = [
+  static const List<String> profileDescriptionList = [];
+  static const List<String> socialIconURL = [
     "https://img.icons8.com/metro/208/ffffff/facebook-new--v2.png",
     "https://img.icons8.com/ios-glyphs/480/ffffff/instagram-new.png",
     "https://img.icons8.com/android/480/ffffff/twitter.png",
@@ -31,7 +35,18 @@ class MyConstant {
     "https://github.com/PushparajManickam",
     "https://medium.com/@coderpush2709"
   ];
-  
+
+  /// Skill
+  static const List<String> listOfSkill = [
+    "Flutter Framework",
+    "Dart Programming",
+    "Firebase",
+    "OOPs",
+    "Basics of DSA",
+    "Basics of Design Patter",
+    "Basics of SQL",
+    "Problem Solving",
+  ];
 
   /// Font-Size
   static const double verySmallSize = 12;
