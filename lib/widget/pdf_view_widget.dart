@@ -21,7 +21,6 @@ class _PDFViewWidgetState extends State<PDFViewWidget> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     loadPDF();
   }

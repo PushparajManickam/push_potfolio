@@ -42,19 +42,47 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
+    _controllerListening();
+  }
+
+  _controllerListening() {
     _nameController.addListener(() {
       setState(() {});
     });
+    _emailController.addListener(() {
+      setState(() {});
+    });
+    _phoneNumberController.addListener(() {
+      setState(() {});
+    });
+    _messageController.addListener(() {
+      setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _disposeController();
+  }
+
+  _disposeController() {
+    _nameController.dispose();
+    _emailController.dispose();
+    _phoneNumberController.dispose();
+    _messageController.dispose();
+    _nameFocusNode.dispose();
+    _emailFocusNode.dispose();
+    _phoneFocusNode.dispose();
+    _messageFocusNode.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Form(
       key: _formkey,
-      autovalidateMode: AutovalidateMode.onUserInteraction,
-     
+      //autovalidateMode: AutovalidateMode.onUserInteraction,
       child: Column(
         children: [
           TitleWidget("Contact Us"),
@@ -113,6 +141,16 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                   Icons.mail,
                 ),
                 prefixIconColor: MyColor.blackColor,
+                suffixIcon: (_emailController.text.isEmpty)
+                    ? Container(
+                        width: 0,
+                      )
+                    : IconButton(
+                        onPressed: () => _emailController.clear(),
+                        icon: Icon(
+                          Icons.clear,
+                        ),
+                      ),
                 hintText: 'Enter your email',
                 contentPadding: const EdgeInsets.symmetric(
                   horizontal: 10.0,
@@ -140,6 +178,16 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                   Icons.phone,
                 ),
                 prefixIconColor: MyColor.blackColor,
+                suffixIcon: (_phoneNumberController.text.isEmpty)
+                    ? Container(
+                        width: 0,
+                      )
+                    : IconButton(
+                        onPressed: () => _phoneNumberController.clear(),
+                        icon: Icon(
+                          Icons.clear,
+                        ),
+                      ),
                 hintText: 'Enter your phone number',
                 contentPadding: const EdgeInsets.symmetric(
                   horizontal: 10.0,
@@ -167,6 +215,16 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                   Icons.message,
                 ),
                 prefixIconColor: MyColor.blackColor,
+                suffixIcon: (_messageController.text.isEmpty)
+                    ? Container(
+                        width: 0,
+                      )
+                    : IconButton(
+                        onPressed: () => _messageController.clear(),
+                        icon: Icon(
+                          Icons.clear,
+                        ),
+                      ),
                 hintText: 'Enter your message',
                 contentPadding: const EdgeInsets.symmetric(
                   horizontal: 10.0,

@@ -16,6 +16,7 @@ class SkillWidget extends StatelessWidget {
         children: [
           TitleWidget("Skill"),
           ListView.builder(
+             physics: NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             itemCount: MyConstant.listOfSkill.length,
             itemBuilder: (context, index) => SkillListWidget(
