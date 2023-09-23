@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:push_potfolio/config/style.dart';
 import 'package:push_potfolio/constant/constant.dart';
 
 import 'skill_list_widget.dart';
@@ -9,17 +10,20 @@ class SkillWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        TitleWidget("Skill"),
-        ListView.builder(
-          shrinkWrap: true,
-          itemCount: MyConstant.listOfSkill.length,
-          itemBuilder: (context, index) => SkillListWidget(
-            MyConstant.listOfSkill[index],
-          ),
-        )
-      ],
+    return Padding(
+      padding: MyStyle.symmetricPadding,
+      child: Column(
+        children: [
+          TitleWidget("Skill"),
+          ListView.builder(
+            shrinkWrap: true,
+            itemCount: MyConstant.listOfSkill.length,
+            itemBuilder: (context, index) => SkillListWidget(
+              MyConstant.listOfSkill[index],
+            ),
+          )
+        ],
+      ),
     );
   }
 }

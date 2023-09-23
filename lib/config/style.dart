@@ -1,11 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:push_potfolio/theme/color.dart';
 
 class MyStyle {
-  /// Space
-  static SizedBox constSpace() => const SizedBox(
-        height: 10,
+  /// Margin and padding
+ static const EdgeInsets symmetricPadding = const EdgeInsets.symmetric(
+        horizontal: 10,
+        vertical: 10,
       );
+  /// TextField
+  static OutlineInputBorder textFieldBorder = OutlineInputBorder(
+    borderRadius: BorderRadius.circular(
+      10,
+    ),
+    borderSide: BorderSide(
+      color: MyColor.graphColor1,
+    ),
+  );
+  static OutlineInputBorder enabledTextFieldBorder = OutlineInputBorder(
+    borderRadius: BorderRadius.circular(
+      10,
+    ),
+    borderSide: BorderSide(
+      color: MyColor.blackColor,
+    ),
+  );
+  static OutlineInputBorder focusedTextFieldBorder = OutlineInputBorder(
+    borderRadius: BorderRadius.circular(
+      10,
+    ),
+    borderSide: BorderSide(
+      color: MyColor.blackColor,
+    ),
+  );
+  static OutlineInputBorder errorTextFieldBorder = OutlineInputBorder(
+    borderRadius: BorderRadius.circular(
+      10,
+    ),
+    borderSide: BorderSide(
+      color: Colors.red,
+    ),
+  );
 
   /// Textstyle
   static TextStyle spectralFont(

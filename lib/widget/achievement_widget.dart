@@ -13,7 +13,7 @@ class AchievementWidget extends StatelessWidget {
       titleName: "Hackerrank C basic",
       imagePath: "assets/images/c_basic.jpg",
     ),
-    AchievementModel(
+  AchievementModel(
       titleName: "Hackerrank C intermediate",
       imagePath: "assets/images/c_intermediate.jpg",
     ),
