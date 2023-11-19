@@ -7,6 +7,9 @@ class MyConstant {
   static const String profileImagePathNetwork =
       'https://drive.google.com/file/d/1PxIqFm91lqCxsIRiFwaI_RaRCT-_W4nX/view?usp=sharing';
 
+  /// Lottie-path
+  static const String resume_lottie = 'assets/lottie/resume_lottie.json';
+
   /// Static-Name
   static const String profileName = 'Pushparaj Manickam';
   static const String profileRole = 'Flutter Developer';
@@ -43,7 +46,7 @@ class MyConstant {
     "Firebase",
     "OOPs",
     "Basics of DSA",
-    "Basics of Design Patter",
+    "Basics of Design Pattern",
     "Basics of SQL",
     "Problem Solving",
   ];

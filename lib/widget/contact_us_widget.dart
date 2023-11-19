@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:intl_phone_field/intl_phone_field.dart';
+import 'package:provider/provider.dart';
 import 'package:push_potfolio/config/global_widget.dart';
 import 'package:push_potfolio/config/style.dart';
+import 'package:push_potfolio/constant/constant.dart';
 import 'package:push_potfolio/theme/color.dart';
+import 'package:push_potfolio/theme/theme_manager.dart';
 import 'title_widget.dart';
 
 class ContactUsWidget extends StatefulWidget {
@@ -28,6 +32,10 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
   FocusNode _phoneFocusNode = FocusNode();
   FocusNode _messageFocusNode = FocusNode();
 
+  /// RegExp-Pattern
+  RegExp _emailRegExp =
+      RegExp(r'/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/');
+
   /// Input-formatter
   List<TextInputFormatter>? _nameInputFormatter = [
     // FilteringTextInputFormatter.allow(
@@ -36,7 +44,12 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
     //   ),
     // ),
   ];
-  List<TextInputFormatter>? _emailInputFormatter = [];
+
+  List<TextInputFormatter>? _emailInputFormatter = [
+    // FilteringTextInputFormatter.allow(
+    //   RegExp(r'/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/'),
+    // ),
+  ];
   List<TextInputFormatter>? _phoneNumberInputFormatter = [];
   List<TextInputFormatter>? _messageInputFormatter = [];
 
@@ -80,6 +93,8 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
 
   @override
   Widget build(BuildContext context) {
+      final isDartTheme =
+        Provider.of<ThemeManager>(context, listen: true).getIsDartTheme;
     return Form(
       key: _formkey,
       //autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -151,6 +166,7 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                           Icons.clear,
                         ),
                       ),
+                suffixIconColor: MyColor.blackColor,
                 hintText: 'Enter your email',
                 contentPadding: const EdgeInsets.symmetric(
                   horizontal: 10.0,
@@ -163,8 +179,42 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
             ),
           ),
           Padding(
-            padding: MyStyle.symmetricPadding,
-            child: TextFormField(
+              padding: MyStyle.symmetricPadding,
+              child: IntlPhoneField(
+                  initialCountryCode: 'IN',
+                  key: Key('phone_number_tf'),
+                  controller: _phoneNumberController,
+                  focusNode: _phoneFocusNode,
+                  textInputAction: TextInputAction.next,
+                  flagsButtonMargin: EdgeInsets.only(
+                    left: 5.0,
+                  ),
+                  dropdownIconPosition: IconPosition.trailing,
+                  decoration: InputDecoration(
+                    counterText: '',
+                    suffixIcon: (_phoneNumberController.text.isEmpty)
+                        ? Container(
+                            width: 0,
+                          )
+                        : IconButton(
+                            onPressed: () => _phoneNumberController.clear(),
+                            icon: Icon(
+                              Icons.clear,
+                            ),
+                          ),
+                    suffixIconColor: MyColor.blackColor,
+                    hintText: 'Enter your phone number',
+                    contentPadding: const EdgeInsets.symmetric(
+                      horizontal: 10.0,
+                    ),
+                    border: MyStyle.textFieldBorder,
+                    enabledBorder: MyStyle.enabledTextFieldBorder,
+                    focusedBorder: MyStyle.focusedTextFieldBorder,
+                    errorBorder: MyStyle.errorTextFieldBorder,
+                  ),
+                  onChanged: _phoneNumberOnChanged)
+              /*
+            TextFormField(
               key: Key('phone_number_tf'),
               controller: _phoneNumberController,
               autocorrect: true,
@@ -188,6 +238,7 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                           Icons.clear,
                         ),
                       ),
+                suffixIconColor: MyColor.blackColor,
                 hintText: 'Enter your phone number',
                 contentPadding: const EdgeInsets.symmetric(
                   horizontal: 10.0,
@@ -198,7 +249,8 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                 errorBorder: MyStyle.errorTextFieldBorder,
               ),
             ),
-          ),
+          */
+              ),
           Padding(
             padding: MyStyle.symmetricPadding,
             child: TextFormField(
@@ -225,6 +277,7 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                           Icons.clear,
                         ),
                       ),
+                suffixIconColor: MyColor.blackColor,
                 hintText: 'Enter your message',
                 contentPadding: const EdgeInsets.symmetric(
                   horizontal: 10.0,
@@ -254,7 +307,13 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                 );
               }
             },
-            child: Text('Submit'),
+            child: Text(
+            'Submit',  style: MyStyle.robotoFont(
+            MyConstant.largeSize,
+            (isDartTheme) ?  MyColor.blackColor:MyColor.whiteColor,
+            FontWeight.bold,
+          ),
+          ),
           ),
         ],
       ),
@@ -268,17 +327,22 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
     return null;
   }
 
+  bool isEmailValid(String email) {
+    // Define a regular expression pattern for email validation
+    // This is a basic pattern and may not catch all possible valid email addresses.
+    // You can use a more complex regex pattern if needed.
+    final pattern = r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$';
+    final regExp = RegExp(pattern);
+    return regExp.hasMatch(email);
+  }
+
   String? _emailValidator(String? value) {
     if (value!.isEmpty) {
       return 'Enter your email';
     }
-    return null;
-  }
-
-  String? _phoneNumberValidator(String? value) {
-    if (value!.isEmpty) {
-      return 'Enter your phone number';
-    }
+    //  else if (!_emailRegExp.hasMatch(value)) {
+    //   return 'Enter invalid email';
+    // }
     return null;
   }
 
@@ -289,8 +353,19 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
     return null;
   }
 
-  _nameOnChanged(value) {}
-  _phoneNumberOnChanged(value) {}
-  _emailOnChanged(value) {}
-  _messageOnChanged(value) {}
+  _nameOnChanged(value) {
+    print(value);
+  }
+
+  _phoneNumberOnChanged(value) {
+    print(value);
+  }
+
+  _emailOnChanged(value) {
+    print(value);
+  }
+
+  _messageOnChanged(value) {
+    print(value);
+  }
 }

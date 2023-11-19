@@ -47,7 +47,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     /// Bio
                     const ProfileWidget(),
                     const BioWidget(),
-                    const ResumeButtonWidget(),
                     const GlobalSizedBoxHeight(),
 
                     /// About-Us

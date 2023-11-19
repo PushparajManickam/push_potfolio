@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:push_potfolio/config/global_function.dart';
 import 'package:push_potfolio/constant/constant.dart';
 import 'package:push_potfolio/theme/color.dart';
+import 'package:push_potfolio/theme/theme_manager.dart';
 import 'package:push_potfolio/widget/title_widget.dart';
 
 class SocialMediaWidget extends StatelessWidget {
@@ -9,6 +11,8 @@ class SocialMediaWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDartTheme =
+        Provider.of<ThemeManager>(context, listen: true).getIsDartTheme;
     return Container(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -41,7 +45,7 @@ class SocialMediaWidget extends StatelessWidget {
                                 MyConstant.socialLinks[e.key]),
                             icon: Image.network(
                               e.value,
-                              color: MyColor.blackColor,
+                              color:  (isDartTheme) ? MyColor.whiteColor : MyColor.blackColor,
                             ),
                           ),
                         ),

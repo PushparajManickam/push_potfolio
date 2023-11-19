@@ -13,7 +13,7 @@ class AchievementWidget extends StatelessWidget {
       titleName: "Hackerrank C basic",
       imagePath: "assets/images/c_basic.jpg",
     ),
-  AchievementModel(
+    AchievementModel(
       titleName: "Hackerrank C intermediate",
       imagePath: "assets/images/c_intermediate.jpg",
     ),
@@ -48,12 +48,16 @@ class AchievementWidget extends StatelessWidget {
           ),
           itemBuilder:
               (BuildContext context, int itemIndex, int pageViewIndex) {
-            return AchievementCard(
-              _myAchievementList[itemIndex],
+            return Padding(
+              padding: const EdgeInsets.only(
+                bottom: 10.0,
+              ),
+              child: AchievementCard(
+                _myAchievementList[itemIndex],
+              ),
             );
           },
         ),
-        const GlobalSizedBoxHeight()
       ],
     );
   }
