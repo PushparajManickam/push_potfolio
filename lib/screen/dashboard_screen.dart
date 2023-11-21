@@ -6,7 +6,6 @@ import 'package:push_potfolio/widget/about_us_widget.dart';
 import 'package:push_potfolio/widget/bio_widget.dart';
 import 'package:push_potfolio/widget/contact_us_widget.dart';
 import 'package:push_potfolio/widget/profile_widget.dart';
-import 'package:push_potfolio/widget/resume_button_widget.dart';
 import 'package:push_potfolio/widget/skill_widget.dart';
 import 'package:push_potfolio/widget/social_media_widget.dart';
 import 'package:push_potfolio/widget/theme_widget.dart';

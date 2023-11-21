@@ -7,6 +7,7 @@ import 'package:push_potfolio/config/style.dart';
 import 'package:push_potfolio/constant/constant.dart';
 import 'package:push_potfolio/theme/color.dart';
 import 'package:push_potfolio/theme/theme_manager.dart';
+
 import 'title_widget.dart';
 
 class ContactUsWidget extends StatefulWidget {
@@ -33,8 +34,8 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
   FocusNode _messageFocusNode = FocusNode();
 
   /// RegExp-Pattern
-  RegExp _emailRegExp =
-      RegExp(r'/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/');
+  // RegExp _emailRegExp =
+  //     RegExp(r'/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/');
 
   /// Input-formatter
   List<TextInputFormatter>? _nameInputFormatter = [
@@ -50,7 +51,7 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
     //   RegExp(r'/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/'),
     // ),
   ];
-  List<TextInputFormatter>? _phoneNumberInputFormatter = [];
+  //List<TextInputFormatter>? _phoneNumberInputFormatter = [];
   List<TextInputFormatter>? _messageInputFormatter = [];
 
   @override
@@ -204,6 +205,7 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                           ),
                     suffixIconColor: MyColor.blackColor,
                     hintText: 'Enter your phone number',
+                    errorText: 'Enter valid phone number',
                     contentPadding: const EdgeInsets.symmetric(
                       horizontal: 10.0,
                     ),
