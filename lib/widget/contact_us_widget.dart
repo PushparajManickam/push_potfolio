@@ -94,7 +94,7 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
 
   @override
   Widget build(BuildContext context) {
-      final isDartTheme =
+    final isDartTheme =
         Provider.of<ThemeManager>(context, listen: true).getIsDartTheme;
     return Form(
       key: _formkey,
@@ -187,6 +187,7 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                   controller: _phoneNumberController,
                   focusNode: _phoneFocusNode,
                   textInputAction: TextInputAction.next,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   flagsButtonMargin: EdgeInsets.only(
                     left: 5.0,
                   ),
@@ -205,7 +206,6 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                           ),
                     suffixIconColor: MyColor.blackColor,
                     hintText: 'Enter your phone number',
-                    errorText: 'Enter valid phone number',
                     contentPadding: const EdgeInsets.symmetric(
                       horizontal: 10.0,
                     ),
@@ -214,6 +214,7 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                     focusedBorder: MyStyle.focusedTextFieldBorder,
                     errorBorder: MyStyle.errorTextFieldBorder,
                   ),
+                  validator: _phoneNumberValidator,
                   onChanged: _phoneNumberOnChanged)
               /*
             TextFormField(
@@ -309,13 +310,15 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                 );
               }
             },
+            color: (isDartTheme) ? MyColor.whiteColor : MyColor.blackColor,
             child: Text(
-            'Submit',  style: MyStyle.robotoFont(
-            MyConstant.largeSize,
-            (isDartTheme) ?  MyColor.blackColor:MyColor.whiteColor,
-            FontWeight.bold,
-          ),
-          ),
+              'Submit',
+              style: MyStyle.robotoFont(
+                MyConstant.largeSize,
+                (isDartTheme) ? MyColor.blackColor : MyColor.whiteColor,
+                FontWeight.bold,
+              ),
+            ),
           ),
         ],
       ),
@@ -325,6 +328,14 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
   String? _nameValidator(String? value) {
     if (value!.isEmpty) {
       return 'Enter your name';
+    }
+    return null;
+  }
+
+  String? _phoneNumberValidator(value) {
+    print(value);
+    if (value.toString().length < 10) {
+      return "Enter valid mobile number";
     }
     return null;
   }

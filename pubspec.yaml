@@ -40,10 +40,16 @@ dependencies:
   url_launcher: ^6.1.12
   provider: ^6.0.5
   carousel_slider: ^4.2.1
-  pdfx: ^2.4.0
+  pdfx: ^2.5.0
+  # pdfx:
+  #   git:
+  #     url: 'https://github.com/ScerIO/packages.flutter'
+  #     ref: '4be9de9ffed5398fd7d5f44bbb07dcd3d3f1711b'
+  #     path: packages/pdfx
   intl_phone_field: ^3.2.0
   lottie: ^2.6.0
   firebase_storage: ^11.5.2
+  firebase_core: ^2.23.0
 
 dev_dependencies:
   flutter_test:

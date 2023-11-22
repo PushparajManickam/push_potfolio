@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "420788056778",
+    "project_id": "push-portfolio-27",
+    "storage_bucket": "push-portfolio-27.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:420788056778:android:d5bd76e2aa3daa67c67a33",
+        "android_client_info": {
+          "package_name": "com.coderpush.push_potfolio"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-x-hKAH0mkPT3ZVSWTv6zRyntNc_J9b4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
