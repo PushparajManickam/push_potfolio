@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
@@ -5,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:push_potfolio/config/global_widget.dart';
 import 'package:push_potfolio/config/style.dart';
 import 'package:push_potfolio/constant/constant.dart';
+import 'package:push_potfolio/model/contact_us_model.dart';
 import 'package:push_potfolio/theme/color.dart';
 import 'package:push_potfolio/theme/theme_manager.dart';
 
@@ -54,6 +56,8 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
   //List<TextInputFormatter>? _phoneNumberInputFormatter = [];
   List<TextInputFormatter>? _messageInputFormatter = [];
 
+  /// Firebase storage
+  FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
   @override
   void initState() {
     super.initState();
@@ -187,7 +191,6 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                   controller: _phoneNumberController,
                   focusNode: _phoneFocusNode,
                   textInputAction: TextInputAction.next,
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   flagsButtonMargin: EdgeInsets.only(
                     left: 5.0,
                   ),
@@ -296,18 +299,24 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
           MaterialButton(
             onPressed: () {
               const snackBar = SnackBar(
-                margin: EdgeInsets.symmetric(
-                  horizontal: 10.0,
-                  vertical: 10.0,
-                ),
                 content: Text(
                   'Data submited successfully...',
                 ),
               );
               if (_formkey.currentState!.validate()) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  snackBar,
-                );
+                _firebaseFirestore.collection('contactus').add({
+                  "name": _nameController.text,
+                  "email": _emailController.text,
+                  "phone number": _phoneNumberController.text,
+                  "message": _messageController.text
+                }).then((value) {
+                  ScaffoldMessenger.of(
+                    context,
+                  ).showSnackBar(
+                    snackBar,
+                  );
+                  //_textFieldClearFunc();
+                });
               }
             },
             color: (isDartTheme) ? MyColor.whiteColor : MyColor.blackColor,
@@ -380,5 +389,12 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
 
   _messageOnChanged(value) {
     print(value);
+  }
+
+  _textFieldClearFunc() {
+    _nameController.clear();
+    _emailController.clear();
+    _phoneNumberController.clear();
+    _messageController.clear();
   }
 }
