@@ -9,17 +9,20 @@ class MyConstant {
 
   /// Lottie-path
   static const String resume_lottie = 'assets/lottie/resume_lottie.json';
+  static const String portfolio_lottie = 'assets/lottie/portfolio_lottie.json';
 
   /// Static-Name
   static const String profileName = 'Pushparaj Manickam';
   static const String profileRole = 'Flutter Developer';
 
   /// About-US
-  static const String profileDescription =
-      'Am a skilled flutter developer. If looking for a highly skilled and rich experience mobile expert with a deep knownledge, '
-      'a professional attitude, excellent communication skills and the highest code quality, '
-      'then I\'m the person looking for.Knownledge of UI/UX, and hand on experience designing in UI Working '
-      'provider package for state management and firebase for application analysis.Experience developing with RESTAPI for backend and SQL Server for database';
+  static const List profileDescription = [
+    '- Am a skilled flutter developer. If looking for a highly skilled and rich experience mobile expert with a deep knownledge, a professional attitude, excellent communication skills and the highest code quality, then I\'m the person looking for knownledge and hand on experience designing of UI/UX.',
+    '- Provider package for state management and firebase for application analysis.',
+    '- Integrated animations for the application UI and widgets',
+    '- Handling of widgets state properly to work with background data updates',
+    '- Experience developing with RESTAPI for backend and SQL Server for database',
+  ];
   static const List<String> profileDescriptionList = [];
   static const List<String> socialIconURL = [
     "https://img.icons8.com/metro/208/ffffff/facebook-new--v2.png",
@@ -28,6 +31,7 @@ class MyConstant {
     "https://img.icons8.com/metro/308/ffffff/linkedin.png",
     "https://img.icons8.com/material-rounded/384/ffffff/github.png",
     "https://img.icons8.com/ios-filled/500/ffffff/medium-monogram--v1.png"
+        "https://img.icons8.com/ios-filled/500/ffffff/medium-monogram--v1.png"
   ];
 
   static const List<String> socialLinks = [
@@ -36,7 +40,8 @@ class MyConstant {
     "https://twitter.com/PushCoder",
     "https://linkedin.com/in/pushparaj-manickam",
     "https://github.com/PushparajManickam",
-    "https://medium.com/@coderpush2709"
+    "https://medium.com/@coderpush2709",
+    "https://pushparajmanickam.github.io/custom_portfolio/",
   ];
 
   /// Skill

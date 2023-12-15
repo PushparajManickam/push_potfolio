@@ -27,14 +27,17 @@ class MyApp extends StatelessWidget {
       initial: AdaptiveThemeMode.system,
       builder: (theme, darkTheme) => MultiProvider(
         providers: [
-          ChangeNotifierProvider(create: (_)=>ThemeManager(),),
+          ChangeNotifierProvider(
+            create: (_) => ThemeManager(),
+          ),
         ],
         child: MaterialApp(
           theme: theme,
           darkTheme: darkTheme,
           debugShowCheckedModeBanner: false,
-          
-          home: DashboardScreen(savedThemeMode: savedThemeMode,),
+          home: DashboardScreen(
+            savedThemeMode: savedThemeMode,
+          ),
         ),
       ),
     );

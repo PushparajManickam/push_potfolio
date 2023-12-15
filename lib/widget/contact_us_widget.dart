@@ -1,7 +1,10 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
+import 'package:intl_phone_field/phone_number.dart';
 import 'package:provider/provider.dart';
 import 'package:push_potfolio/config/global_widget.dart';
 import 'package:push_potfolio/config/style.dart';
@@ -58,6 +61,8 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
 
   /// Firebase storage
   FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
+  // PhoneNumber _phoneNumber = PhoneNumber.fromCompleteNumber(completeNumber: '');
+  bool isLoading = false;
   @override
   void initState() {
     super.initState();
@@ -184,42 +189,43 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
             ),
           ),
           Padding(
-              padding: MyStyle.symmetricPadding,
-              child: IntlPhoneField(
-                  initialCountryCode: 'IN',
-                  key: Key('phone_number_tf'),
-                  controller: _phoneNumberController,
-                  focusNode: _phoneFocusNode,
-                  textInputAction: TextInputAction.next,
-                  flagsButtonMargin: EdgeInsets.only(
-                    left: 5.0,
-                  ),
-                  dropdownIconPosition: IconPosition.trailing,
-                  decoration: InputDecoration(
-                    counterText: '',
-                    suffixIcon: (_phoneNumberController.text.isEmpty)
-                        ? Container(
-                            width: 0,
-                          )
-                        : IconButton(
-                            onPressed: () => _phoneNumberController.clear(),
-                            icon: Icon(
-                              Icons.clear,
-                            ),
-                          ),
-                    suffixIconColor: MyColor.blackColor,
-                    hintText: 'Enter your phone number',
-                    contentPadding: const EdgeInsets.symmetric(
-                      horizontal: 10.0,
-                    ),
-                    border: MyStyle.textFieldBorder,
-                    enabledBorder: MyStyle.enabledTextFieldBorder,
-                    focusedBorder: MyStyle.focusedTextFieldBorder,
-                    errorBorder: MyStyle.errorTextFieldBorder,
-                  ),
-                  validator: _phoneNumberValidator,
-                  onChanged: _phoneNumberOnChanged)
-              /*
+            padding: MyStyle.symmetricPadding,
+            child: IntlPhoneField(
+              initialCountryCode: 'IN',
+              key: Key('phone_number_tf'),
+              controller: _phoneNumberController,
+              focusNode: _phoneFocusNode,
+              textInputAction: TextInputAction.next,
+              flagsButtonMargin: EdgeInsets.only(
+                left: 5.0,
+              ),
+              dropdownIconPosition: IconPosition.trailing,
+              decoration: InputDecoration(
+                counterText: '',
+                suffixIcon: (_phoneNumberController.text.isEmpty)
+                    ? Container(
+                        width: 0,
+                      )
+                    : IconButton(
+                        onPressed: () => _phoneNumberController.clear(),
+                        icon: Icon(
+                          Icons.clear,
+                        ),
+                      ),
+                suffixIconColor: MyColor.blackColor,
+                hintText: 'Enter your phone number',
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 10.0,
+                ),
+                border: MyStyle.textFieldBorder,
+                enabledBorder: MyStyle.enabledTextFieldBorder,
+                focusedBorder: MyStyle.focusedTextFieldBorder,
+                errorBorder: MyStyle.errorTextFieldBorder,
+              ),
+              validator: _phoneNumberValidator,
+              onChanged: _phoneNumberOnChanged,
+            ),
+            /*
             TextFormField(
               key: Key('phone_number_tf'),
               controller: _phoneNumberController,
@@ -256,7 +262,7 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
               ),
             ),
           */
-              ),
+          ),
           Padding(
             padding: MyStyle.symmetricPadding,
             child: TextFormField(
@@ -296,37 +302,65 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
             ),
           ),
           const GlobalSizedBoxHeight(),
-          MaterialButton(
-            onPressed: () {
-              const snackBar = SnackBar(
-                content: Text(
-                  'Data submited successfully...',
+          SizedBox(
+            width: MediaQuery.of(context).size.width * 0.9,
+            height: 45,
+            child: MaterialButton(
+              color: (isDartTheme) ? MyColor.whiteColor : MyColor.blackColor,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(
+                    10.0,
+                  ),
                 ),
-              );
-              if (_formkey.currentState!.validate()) {
-                _firebaseFirestore.collection('contactus').add({
-                  "name": _nameController.text,
-                  "email": _emailController.text,
-                  "phone number": _phoneNumberController.text,
-                  "message": _messageController.text
-                }).then((value) {
-                  ScaffoldMessenger.of(
-                    context,
-                  ).showSnackBar(
-                    snackBar,
-                  );
-                  //_textFieldClearFunc();
-                });
-              }
-            },
-            color: (isDartTheme) ? MyColor.whiteColor : MyColor.blackColor,
-            child: Text(
-              'Submit',
-              style: MyStyle.robotoFont(
-                MyConstant.largeSize,
-                (isDartTheme) ? MyColor.blackColor : MyColor.whiteColor,
-                FontWeight.bold,
               ),
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+              onPressed: () {
+                setState(() {
+                  isLoading = !isLoading;
+                });
+                const snackBar = SnackBar(
+                  content: Text(
+                    'Data submited successfully...',
+                  ),
+                );
+                if (_formkey.currentState!.validate()) {
+                  _firebaseFirestore.collection('contactus').add({
+                    "name": _nameController.text,
+                    "email": _emailController.text,
+                    "phone number": _phoneNumberController.text,
+                    "message": _messageController.text
+                  }).then((value) {
+                    setState(() {
+                      isLoading = !isLoading;
+                    });
+                    ScaffoldMessenger.of(
+                      context,
+                    ).showSnackBar(
+                      snackBar,
+                    );
+                    //_textFieldClearFunc();
+                  });
+                } else {
+                  setState(() {
+                    isLoading = !isLoading;
+                  });
+                }
+              },
+              child: (isLoading)
+                  ? Center(
+                      child: CircularProgressIndicator(
+                        color: MyColor.whiteColor,
+                      ),
+                    )
+                  : Text(
+                      'Submit',
+                      style: MyStyle.robotoFont(
+                        MyConstant.largeSize,
+                        (isDartTheme) ? MyColor.blackColor : MyColor.whiteColor,
+                        FontWeight.bold,
+                      ),
+                    ),
             ),
           ),
         ],
@@ -342,8 +376,10 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
   }
 
   String? _phoneNumberValidator(value) {
-    print(value);
-    if (value.toString().length < 10) {
+    PhoneNumber _phoneNumber = value;
+    if (_phoneNumber.number == "") {
+      return "Enter mobile number";
+    } else if (value.toString().length < 10) {
       return "Enter valid mobile number";
     }
     return null;
@@ -375,21 +411,13 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
     return null;
   }
 
-  _nameOnChanged(value) {
-    print(value);
-  }
+  _nameOnChanged(value) {}
 
-  _phoneNumberOnChanged(value) {
-    print(value);
-  }
+  _phoneNumberOnChanged(value) {}
 
-  _emailOnChanged(value) {
-    print(value);
-  }
+  _emailOnChanged(value) {}
 
-  _messageOnChanged(value) {
-    print(value);
-  }
+  _messageOnChanged(value) {}
 
   _textFieldClearFunc() {
     _nameController.clear();

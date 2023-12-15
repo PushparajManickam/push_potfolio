@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:push_potfolio/config/global_function.dart';
 import 'package:push_potfolio/config/global_widget.dart';
 import 'package:push_potfolio/config/style.dart';
 import 'package:push_potfolio/constant/constant.dart';
@@ -37,16 +38,28 @@ class BioWidget extends StatelessWidget {
               ),
               const GlobalSizedBoxWidth(),
               GestureDetector(
-                  onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const PDFViewWidget(),
-                        ),
-                      ),
-                  child: SizedBox(
-                      height: 40, 
-                      width: 40,
-                      child: Lottie.asset(MyConstant.resume_lottie)))
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const PDFViewWidget(),
+                  ),
+                ),
+                child: SizedBox(
+                  height: 40,
+                  width: 40,
+                  child: Lottie.asset(MyConstant.resume_lottie,),
+                ),
+              ),
+              const GlobalSizedBoxWidth(),
+              GestureDetector(
+                onTap: () =>
+                    MyGlobalFunction.openUrl(MyConstant.socialLinks[6],),
+                child: SizedBox(
+                  height: 40,
+                  width: 40,
+                  child: Lottie.asset(MyConstant.portfolio_lottie,),
+                ),
+              ),
             ],
           ),
         ],
