@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:push_potfolio/config/global_widget.dart';
@@ -22,6 +24,13 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+  
+
   @override
   Widget build(BuildContext context) {
     return AnimatedTheme(
@@ -55,11 +64,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     /// Skill
                     const SkillWidget(),
                     const GlobalSizedBoxHeight(),
-
+/*
                     /// Achievement
                     AchievementWidget(),
                     const GlobalSizedBoxHeight(),
-
+*/
                     /// Social-Media
                     const SocialMediaWidget(),
                     const GlobalSizedBoxHeight(),
