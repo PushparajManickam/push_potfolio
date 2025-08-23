@@ -1,5 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide CarouselController;
 import 'package:push_potfolio/config/global_widget.dart';
 import 'package:push_potfolio/model/achievement_model.dart';
 import 'package:push_potfolio/widget/title_widget.dart';
