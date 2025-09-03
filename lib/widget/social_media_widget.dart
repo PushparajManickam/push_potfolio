@@ -4,10 +4,11 @@ import 'package:push_potfolio/config/global_function.dart';
 import 'package:push_potfolio/constant/constant.dart';
 import 'package:push_potfolio/theme/color.dart';
 import 'package:push_potfolio/theme/theme_manager.dart';
+import 'package:push_potfolio/widget/common_sizedbox.dart';
 import 'package:push_potfolio/widget/title_widget.dart';
 
-class SocialMediaWidget extends StatelessWidget {
-  const SocialMediaWidget({super.key});
+class ConnectWithMeWidget extends StatelessWidget {
+  const ConnectWithMeWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +19,9 @@ class SocialMediaWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          CommonSizedBox.h10,
           TitleWidget(
-            "Social Media",
+            "Connect With Me",
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -45,7 +47,9 @@ class SocialMediaWidget extends StatelessWidget {
                                 MyConstant.socialLinks[e.key]),
                             icon: Image.network(
                               e.value,
-                              color:  (isDartTheme) ? MyColor.whiteColor : MyColor.blackColor,
+                              color: (isDartTheme)
+                                  ? MyColor.whiteColor
+                                  : MyColor.blackColor,
                             ),
                           ),
                         ),

@@ -14,7 +14,7 @@ class _PDFViewWidgetState extends State<PDFViewWidget> {
   loadPDF() {
     pdfController = PdfController(
       document: PdfDocument.openAsset(
-        'assets/pdf/pushparaj_resume.pdf',
+        'assets/pdf/Pushparaj_Manickam_Flutter_Developer.pdf',
       ),
     );
   }

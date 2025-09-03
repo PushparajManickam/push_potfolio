@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:push_potfolio/config/global_widget.dart';
 import 'package:push_potfolio/config/style.dart';
 import 'package:push_potfolio/constant/constant.dart';
 import 'package:push_potfolio/theme/color.dart';
@@ -15,15 +14,22 @@ class TitleWidget extends StatelessWidget {
     final isDartTheme =
         Provider.of<ThemeManager>(context, listen: true).getIsDartTheme;
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Padding(
-          padding: const EdgeInsets.only(
-            left: 10.0,
+        Expanded(
+          child: Container(
+            height: 2,
+            margin: const EdgeInsets.only(right: 16),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Colors.transparent,
+                  (isDartTheme) ? MyColor.whiteColor : MyColor.blackColor,
+                ],
+                stops: const [0.0, 1.0],
+              ),
+            ),
           ),
-          child: const DividerWidget(),
         ),
-        const GlobalSizedBoxWidth(),
         Text(
           titleName!,
           style: MyStyle.robotoFont(
@@ -31,13 +37,22 @@ class TitleWidget extends StatelessWidget {
             (isDartTheme) ? MyColor.whiteColor : MyColor.blackColor,
             FontWeight.bold,
           ),
+          textAlign: TextAlign.center,
         ),
-        const GlobalSizedBoxWidth(),
-        Padding(
-          padding: const EdgeInsets.only(
-            right: 10.0,
+        Expanded(
+          child: Container(
+            height: 2,
+            margin: const EdgeInsets.only(left: 16),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  (isDartTheme) ? MyColor.whiteColor : MyColor.blackColor,
+                  Colors.transparent,
+                ],
+                stops: const [0.0, 1.0],
+              ),
+            ),
           ),
-          child: const DividerWidget(),
         ),
       ],
     );

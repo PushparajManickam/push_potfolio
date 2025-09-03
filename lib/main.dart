@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:push_potfolio/firebase_options.dart';
 import 'package:push_potfolio/theme/theme_manager.dart';
+import 'package:push_potfolio/theme/app_theme.dart';
 
 import 'screen/dashboard_screen.dart';
 
@@ -22,9 +23,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AdaptiveTheme(
-      light: ThemeData.light(),
-      dark: ThemeData.dark(),
-      initial: AdaptiveThemeMode.system,
+      light: AppTheme.lightTheme,
+      dark: AppTheme.darkTheme,
+      initial: savedThemeMode ?? AdaptiveThemeMode.system,
       builder: (theme, darkTheme) => MultiProvider(
         providers: [
           ChangeNotifierProvider(

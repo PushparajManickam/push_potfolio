@@ -19,13 +19,13 @@ class SkillListWidget extends StatelessWidget {
         horizontal: 8.0,
       ),
       child: Row(children: [
-        Text(
-          "\u2022",
-          style: TextStyle(
-            fontSize: 30,
-          ),
-        ), //bullet text
-        const GlobalSizedBoxWidth(),
+        // Text(
+        //   "\u2022",
+        //   style: TextStyle(
+        //     fontSize: 30,
+        //   ),
+        // ), //bullet text
+        // const GlobalSizedBoxWidth(),
         Expanded(
           child: Text(
             skillName!,

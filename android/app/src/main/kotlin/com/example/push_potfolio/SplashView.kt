@@ -1,5 +1,9 @@
 package com.coderpush.push_potfolio
 
+// SplashScreen API has been deprecated in newer Flutter versions
+// This file is kept for reference but not used
+
+/*
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,3 +18,4 @@ class SplashView : SplashScreen {
         onTransitionComplete.run()
     }
 }
+*/

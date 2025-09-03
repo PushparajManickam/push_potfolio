@@ -12,17 +12,18 @@ import 'package:push_potfolio/constant/constant.dart';
 import 'package:push_potfolio/model/contact_us_model.dart';
 import 'package:push_potfolio/theme/color.dart';
 import 'package:push_potfolio/theme/theme_manager.dart';
+import 'package:push_potfolio/widget/common_sizedbox.dart';
 
 import 'title_widget.dart';
 
-class ContactUsWidget extends StatefulWidget {
-  const ContactUsWidget({super.key});
+class GetInTouchWidget extends StatefulWidget {
+  const GetInTouchWidget({super.key});
 
   @override
-  State<ContactUsWidget> createState() => _ContactUsWidgetState();
+  State<GetInTouchWidget> createState() => _GetInTouchWidgetState();
 }
 
-class _ContactUsWidgetState extends State<ContactUsWidget> {
+class _GetInTouchWidgetState extends State<GetInTouchWidget> {
   /// Formkey
   final _formkey = GlobalKey<FormState>();
 
@@ -110,7 +111,8 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
       //autovalidateMode: AutovalidateMode.onUserInteraction,
       child: Column(
         children: [
-          TitleWidget("Contact Us"),
+          CommonSizedBox.h10,
+          TitleWidget("Get In Touch"),
           const GlobalSizedBoxHeight(),
           Padding(
             padding: MyStyle.symmetricPadding,
