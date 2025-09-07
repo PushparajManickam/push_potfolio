@@ -11,11 +11,11 @@ class AchievementWidget extends StatelessWidget {
   final List<AchievementModel> _myAchievementList = [
     AchievementModel(
       titleName: "Hackerrank C basic",
-      imagePath: "assets/images/c_basic.jpg",
+      imagePath: "assets/images/c_basic_compressed.jpg",
     ),
     AchievementModel(
       titleName: "Hackerrank C intermediate",
-      imagePath: "assets/images/c_intermediate.jpg",
+      imagePath: "assets/images/c_intermediate_compressed.jpg",
     ),
   ];
   @override
