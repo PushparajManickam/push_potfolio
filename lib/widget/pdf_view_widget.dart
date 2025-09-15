@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pdfx/pdfx.dart';
+import 'package:push_potfolio/constant/constant.dart';
 import 'package:push_potfolio/theme/color.dart';
 
 class PDFViewWidget extends StatefulWidget {
@@ -14,7 +15,7 @@ class _PDFViewWidgetState extends State<PDFViewWidget> {
   loadPDF() {
     pdfController = PdfController(
       document: PdfDocument.openAsset(
-        'assets/pdf/Pushparaj_Manickam_Flutter_Developer.pdf',
+        MyConstant.resumePDF,
       ),
     );
   }

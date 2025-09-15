@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -9,7 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:push_potfolio/config/global_widget.dart';
 import 'package:push_potfolio/config/style.dart';
 import 'package:push_potfolio/constant/constant.dart';
-import 'package:push_potfolio/model/contact_us_model.dart';
+
 import 'package:push_potfolio/theme/color.dart';
 import 'package:push_potfolio/theme/theme_manager.dart';
 import 'package:push_potfolio/widget/common_sizedbox.dart';
@@ -39,30 +37,14 @@ class _GetInTouchWidgetState extends State<GetInTouchWidget> {
   FocusNode _phoneFocusNode = FocusNode();
   FocusNode _messageFocusNode = FocusNode();
 
-  /// RegExp-Pattern
-  // RegExp _emailRegExp =
-  //     RegExp(r'/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/');
-
   /// Input-formatter
-  List<TextInputFormatter>? _nameInputFormatter = [
-    // FilteringTextInputFormatter.allow(
-    //   RegExp(
-    //     r'^[A-Za-z]{4,29}$',
-    //   ),
-    // ),
-  ];
-
-  List<TextInputFormatter>? _emailInputFormatter = [
-    // FilteringTextInputFormatter.allow(
-    //   RegExp(r'/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/'),
-    // ),
-  ];
-  //List<TextInputFormatter>? _phoneNumberInputFormatter = [];
+  List<TextInputFormatter>? _nameInputFormatter = [];
+  List<TextInputFormatter>? _emailInputFormatter = [];
   List<TextInputFormatter>? _messageInputFormatter = [];
 
   /// Firebase storage
   FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
-  // PhoneNumber _phoneNumber = PhoneNumber.fromCompleteNumber(completeNumber: '');
+
   bool isLoading = false;
   @override
   void initState() {
@@ -108,7 +90,7 @@ class _GetInTouchWidgetState extends State<GetInTouchWidget> {
         Provider.of<ThemeManager>(context, listen: true).getIsDartTheme;
     return Form(
       key: _formkey,
-      //autovalidateMode: AutovalidateMode.onUserInteraction,
+
       child: Column(
         children: [
           CommonSizedBox.h10,
@@ -341,7 +323,7 @@ class _GetInTouchWidgetState extends State<GetInTouchWidget> {
                     ).showSnackBar(
                       snackBar,
                     );
-                    //_textFieldClearFunc();
+
                   });
                 } else {
                   setState(() {
@@ -388,9 +370,7 @@ class _GetInTouchWidgetState extends State<GetInTouchWidget> {
   }
 
   bool isEmailValid(String email) {
-    // Define a regular expression pattern for email validation
-    // This is a basic pattern and may not catch all possible valid email addresses.
-    // You can use a more complex regex pattern if needed.
+
     final pattern = r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$';
     final regExp = RegExp(pattern);
     return regExp.hasMatch(email);
@@ -400,9 +380,7 @@ class _GetInTouchWidgetState extends State<GetInTouchWidget> {
     if (value!.isEmpty) {
       return 'Enter your email';
     }
-    //  else if (!_emailRegExp.hasMatch(value)) {
-    //   return 'Enter invalid email';
-    // }
+
     return null;
   }
 
@@ -420,11 +398,4 @@ class _GetInTouchWidgetState extends State<GetInTouchWidget> {
   _emailOnChanged(value) {}
 
   _messageOnChanged(value) {}
-
-  _textFieldClearFunc() {
-    _nameController.clear();
-    _emailController.clear();
-    _phoneNumberController.clear();
-    _messageController.clear();
-  }
 }

@@ -19,8 +19,8 @@ class ProfileWidget extends StatelessWidget {
             alignment: Alignment.center,
             child: const CircularProgressIndicator(),
           ),
-          errorWidget: (context, url, error) => Image.asset(
-            MyConstant.profileImagePath,
+          errorWidget: (context, url, error) => Image.network(
+            MyConstant.profileImage,
            height: 320,
             width: 320,
             fit: BoxFit.cover,

@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:push_potfolio/firebase_options.dart';
+import 'package:push_potfolio/screen/splash_screen.dart';
 import 'package:push_potfolio/theme/theme_manager.dart';
 import 'package:push_potfolio/theme/app_theme.dart';
 
@@ -36,8 +37,8 @@ class MyApp extends StatelessWidget {
           theme: theme,
           darkTheme: darkTheme,
           debugShowCheckedModeBanner: false,
-          home: DashboardScreen(
-            savedThemeMode: savedThemeMode,
+          home: SplashScreen(
+              savedThemeMode!,
           ),
         ),
       ),

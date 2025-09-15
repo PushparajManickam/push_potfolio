@@ -1,6 +1,5 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:push_potfolio/config/my_behavior.dart';
 import 'package:push_potfolio/theme/app_theme.dart';
 import 'package:push_potfolio/widget/about_us_widget.dart';
@@ -11,8 +10,6 @@ import 'package:push_potfolio/widget/profile_widget.dart';
 import 'package:push_potfolio/widget/skill_widget.dart';
 import 'package:push_potfolio/widget/social_media_widget.dart';
 import 'package:push_potfolio/widget/theme_widget.dart';
-
-import '../widget/achievement_widget.dart';
 
 class DashboardScreen extends StatefulWidget {
   final AdaptiveThemeMode? savedThemeMode;
@@ -26,7 +23,6 @@ class DashboardScreen extends StatefulWidget {
 class _DashboardScreenState extends State<DashboardScreen> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 
@@ -66,103 +62,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     ),
                   ),
                   actions: [
-                    // Exit Button
-                    // Padding(
-                    //   padding: const EdgeInsets.only(right: AppTheme.spacingS),
-                    //   child: Container(
-                    //     decoration: BoxDecoration(
-                    //       borderRadius: BorderRadius.circular(12),
-                    //       gradient: LinearGradient(
-                    //         colors: [
-                    //           colorScheme.error.withOpacity(0.8),
-                    //           colorScheme.error.withOpacity(0.6),
-                    //         ],
-                    //         begin: Alignment.topLeft,
-                    //         end: Alignment.bottomRight,
-                    //       ),
-                    //       boxShadow: [
-                    //         BoxShadow(
-                    //           color: colorScheme.error.withOpacity(0.3),
-                    //           blurRadius: 8,
-                    //           offset: const Offset(0, 2),
-                    //         ),
-                    //       ],
-                    //     ),
-                    //     child: Material(
-                    //       color: Colors.transparent,
-                    //       child: InkWell(
-                    //         borderRadius: BorderRadius.circular(12),
-                    //         onTap: () {
-                    //           showDialog(
-                    //             context: context,
-                    //             builder: (BuildContext context) {
-                    //               return AlertDialog(
-                    //                 shape: RoundedRectangleBorder(
-                    //                   borderRadius: BorderRadius.circular(16),
-                    //                 ),
-                    //                 title: Row(
-                    //                   children: [
-                    //                     Icon(
-                    //                       Icons.exit_to_app,
-                    //                       color: colorScheme.error,
-                    //                     ),
-                    //                     const SizedBox(width: 8),
-                    //                     Text(
-                    //                       'Exit Application',
-                    //                       style: TextStyle(
-                    //                         color: colorScheme.onSurface,
-                    //                         fontWeight: FontWeight.bold,
-                    //                       ),
-                    //                     ),
-                    //                   ],
-                    //                 ),
-                    //                 content: Text(
-                    //                   'Are you sure you want to exit the portfolio application?',
-                    //                   style: TextStyle(
-                    //                     color: colorScheme.onSurface.withOpacity(0.8),
-                    //                   ),
-                    //                 ),
-                    //                 actions: [
-                    //                   TextButton(
-                    //                     onPressed: () => Navigator.of(context).pop(),
-                    //                     child: Text(
-                    //                       'Cancel',
-                    //                       style: TextStyle(
-                    //                         color: colorScheme.primary,
-                    //                       ),
-                    //                     ),
-                    //                   ),
-                    //                   ElevatedButton(
-                    //                     onPressed: () {
-                    //                       Navigator.of(context).pop();
-                    //                       SystemNavigator.pop();
-                    //                     },
-                    //                     style: ElevatedButton.styleFrom(
-                    //                       backgroundColor: colorScheme.error,
-                    //                       foregroundColor: colorScheme.onError,
-                    //                       shape: RoundedRectangleBorder(
-                    //                         borderRadius: BorderRadius.circular(8),
-                    //                       ),
-                    //                     ),
-                    //                     child: const Text('Exit'),
-                    //                   ),
-                    //                 ],
-                    //               );
-                    //             },
-                    //           );
-                    //         },
-                    //         child: const Padding(
-                    //           padding: EdgeInsets.all(12),
-                    //           child: Icon(
-                    //             Icons.power_settings_new,
-                    //             color: Colors.white,
-                    //             size: 20,
-                    //           ),
-                    //         ),
-                    //       ),
-                    //     ),
-                    //   ),
-                    // ),
                     // Theme Toggle Button
                     const Padding(
                       padding: EdgeInsets.only(right: AppTheme.spacingM),
@@ -179,12 +78,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   ),
                   sliver: SliverList(
                     delegate: SliverChildListDelegate([
-                      CommonSizedBox.h10,
+                      CommonSizedBox.h20,
                       // Profile Section
-                     const ProfileWidget(),
+                      const ProfileWidget(),
 
                       // Bio Section
-                     const BioWidget(),
+                      const BioWidget(),
 
                       // About Section
                       _buildSection(
@@ -197,13 +96,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         context,
                         child: const SkillWidget(),
                       ),
-
-                      // Achievement Section (commented out but structured)
-                      // _buildSection(
-                      //   context,
-                      //   title: 'Achievements',
-                      //   child: const AchievementWidget(),
-                      // ),
 
                       // Social Media Section
                       _buildSection(

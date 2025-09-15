@@ -26,8 +26,6 @@ class _ThemeWidgetState extends State<ThemeWidget> {
             size: MyConstant.titleSize,
           ),
           onPressed: () {
-            // AdaptiveTheme.of(context).toggleThemeMode();
-            //TODO: theme mode
             setState(() {
               if (_icon == Icons.wb_sunny) {
                 _icon = Icons.brightness_2;

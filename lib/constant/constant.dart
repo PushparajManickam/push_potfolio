@@ -1,19 +1,22 @@
 class MyConstant {
   /// Image-Path
-  static const String profileImagePath = 'assets/images/profile_photo.png';
-  static const String flagIconPath = 'assets/icons/india_flag.svg';
+  static const String flagIconPath = 'https://drive.google.com/file/d/1gVirsGAxlxD7laS2ov1_V-Xm9BPx90-m/view?usp=sharing';
 
   ///Image-Pathh from network
-  static const String profileImagePathNetwork =
+  static const String profileImage =
       'https://drive.google.com/file/d/1PxIqFm91lqCxsIRiFwaI_RaRCT-_W4nX/view?usp=sharing';
 
   /// Lottie-path
-  static const String resume_lottie = 'assets/lottie/resume_lottie.json';
-  static const String portfolio_lottie = 'assets/lottie/portfolio_lottie.json';
+  static const String resume_lottie = 'https://lottie.host/dca5f5da-10ac-4ae5-ba18-195713bdfacc/sMbOpwxE57.json';
+  static const String portfolio_lottie = 'https://lottie.host/73956f93-77e5-4b7d-a111-4b991ab5172e/7oGXejfvBF.json';
 
   /// Static-Name
   static const String profileName = 'Pushparaj Manickam';
   static const String profileRole = 'Flutter Developer';
+
+  /// PDF-URL
+  static const String pdfURL = 'https://drive.google.com/file/d/1JKG38yp4sYgzQjDrmB8mJoyBvxCRpiLu/view?usp=sharing';
+  static const String resumePDF = 'assets/pdf/Pushparaj_Manickam_Flutter_Developer.pdf';
 
   /// About-US
   static const List profileDescription = [

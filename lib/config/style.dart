@@ -47,7 +47,6 @@ class MyStyle {
       double fontSize, Color fontColor, FontWeight fontWeight) {
     return GoogleFonts.spectral(
       fontSize: fontSize,
-      // color: fontColor,
       fontWeight: fontWeight,
     );
   }
@@ -65,7 +64,6 @@ class MyStyle {
       double fontSize, Color fontColor, FontWeight fontWeight) {
     return GoogleFonts.openSans(
       fontSize: fontSize,
-      // color: fontColor,
       fontWeight: fontWeight,
     );
   }
@@ -74,7 +72,6 @@ class MyStyle {
       double fontSize, Color fontColor, FontWeight fontWeight) {
     return GoogleFonts.montserrat(
       fontSize: fontSize,
-      // color: fontColor,
       fontWeight: fontWeight,
     );
   }
@@ -83,7 +80,6 @@ class MyStyle {
       double fontSize, Color fontColor, FontWeight fontWeight) {
     return GoogleFonts.ptSans(
       fontSize: fontSize,
-      // color: fontColor,
       fontWeight: fontWeight,
     );
   }
@@ -92,7 +88,6 @@ class MyStyle {
       double fontSize, Color fontColor, FontWeight fontWeight) {
     return GoogleFonts.poppins(
       fontSize: fontSize,
-      // color: fontColor,
       fontWeight: fontWeight,
     );
   }
@@ -101,7 +96,6 @@ class MyStyle {
       double fontSize, Color fontColor, FontWeight fontWeight) {
     return GoogleFonts.nunitoSans(
       fontSize: fontSize,
-      // color: fontColor,
       fontWeight: fontWeight,
     );
   }
@@ -110,7 +104,6 @@ class MyStyle {
       double fontSize, Color fontColor, FontWeight fontWeight) {
     return GoogleFonts.lato(
       fontSize: fontSize,
-      // color: fontColor,
       fontWeight: fontWeight,
     );
   }
@@ -119,7 +112,6 @@ class MyStyle {
       double fontSize, Color fontColor, FontWeight fontWeight) {
     return GoogleFonts.pacifico(
       fontSize: fontSize,
-      // color: fontColor,
       fontWeight: fontWeight,
     );
   }
@@ -128,7 +120,6 @@ class MyStyle {
       double fontSize, Color fontColor, FontWeight fontWeight) {
     return GoogleFonts.caveat(
       fontSize: fontSize,
-      // color: fontColor,
       fontWeight: fontWeight,
     );
   }

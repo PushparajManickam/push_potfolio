@@ -47,7 +47,7 @@ class BioWidget extends StatelessWidget {
                 child: SizedBox(
                   height: 40,
                   width: 40,
-                  child: Lottie.asset(MyConstant.resume_lottie,),
+                  child: Lottie.network(MyConstant.resume_lottie,),
                 ),
               ),
               const GlobalSizedBoxWidth(),
@@ -57,7 +57,7 @@ class BioWidget extends StatelessWidget {
                 child: SizedBox(
                   height: 40,
                   width: 40,
-                  child: Lottie.asset(MyConstant.portfolio_lottie,),
+                  child: Lottie.network(MyConstant.portfolio_lottie,),
                 ),
               ),
             ],
