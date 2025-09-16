@@ -44,7 +44,7 @@ class MyConstant {
     "https://linkedin.com/in/pushparaj-manickam",
     "https://github.com/PushparajManickam",
     "https://medium.com/@coderpush2709",
-    "https://pushparajmanickam.github.io/custom_portfolio/",
+    "https://pushparajmanickam.github.io/pushparaj_portfolio/",
   ];
 
   /// Skill
